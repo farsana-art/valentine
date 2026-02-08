@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Valentine 💖</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body {
+margin: 0;
+height: 100vh;
+background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+display: flex;
+justify-content: center;
+align-items: center;
+font-family: Arial, sans-serif;
+overflow: hidden;
+}
+
+/* Floating hearts */
+.heart {
+position: absolute;
+color: #ff4d6d;
+font-size: 20px;
+animation: float 6s linear infinite;
+opacity: 0.7;
+}
+@keyframes float {
+0% { transform: translateY(100vh) scale(1); }
+100% { transform: translateY(-10vh) scale(1.5); }
+}
+
+.card {
+background: white;
+padding: 30px;
+border-radius: 20px;
+text-align: center;
+box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+width: 90%;
+max-width: 400px;
+position: relative;
+z-index: 2;
+}
+
+h1 { color: #ff4d6d; }
+p { color: #555; }
+
+button {
+padding: 12px 25px;
+font-size: 16px;
+border: none;
+border-radius: 25px;
+cursor: pointer;
+margin-top: 15px;
+}
+
+.yes { background: #ff4d6d; color: white; }
+.next { background: #ff4d6d; color: white; }
+.no {
+background: #ddd;
+position: absolute;
+left: 20px;
+top: 150px;
+}
+
+/* Memory gallery */
+.gallery {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 10px;
+margin-top: 20px;
+}
+.gallery img {
+width: 100%;
+border-radius: 15px;
+}
+</style>
+</head>
+<body>
+
+<audio autoplay loop>
+<source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mp3">
+</audio>
+
+<div class="card" id="page1">
+<h1>💘 Hello My LOVE 💘</h1>
+<p>
+Ippm theerumanikanam
+Will you be my Valentine forever? 💖
+</p>
+<button class="yes" onclick="goToPage2()">Yes ❤️</button>
+<button class="no" id="noBtn">No 😢</button>
+</div>
+
+<script>
+const noBtn = document.getElementById("noBtn");
+const card = document.querySelector(".card");
+
+function randomMove() {
+const maxX = card.clientWidth - noBtn.offsetWidth;
+const maxY = card.clientHeight - noBtn.offsetHeight;
+const x = Math.random() * maxX;
+const y = Math.random() * maxY;
+noBtn.style.left = x + "px";
+noBtn.style.top = y + "px";
+}
+setInterval(randomMove, 700);
+
+function goToPage2() {
+document.body.innerHTML = `
+<div class="card">
+<h1>💖 Yay Shuttu! 💖</h1>
+<p>Appo shuttumanikk ennod premam nd le...🫂🫂🫂
+You just made me the happiest person alive!</p>
+
+<img
+src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif"
+style="width:250px; border-radius:20px; margin-top:15px;"
+>
+
+<br>
+<button class="next" onclick="goToPage3()">See Our Memories 💕</button>
+</div>
+`;
+}
+
+function goToPage3() {
+document.body.innerHTML = `
+<div class="card">
+<h1>📸 Our Beautiful Memories</h1>
+<p>
+It began with the nervous hum of a video call and "tesion maariyoo😊","Njnm kurach tensionil aayi pooyi inje sherik onn kaanan onm pateela".
+Tension il ninn pinne daily good mrng ,sharing photos,angottum ingottum kaliyakal,cheriya cheriya penakkangal okke ayyi 5 mnth I fell in love with you before we held our hands.
+Jeevitha kalam muzhuvan kanende aale first time aayi kanunnapo ulla tension ,literally ,enikk ingale face cheyyan nalla bhudhimutt ndernnu,and also aa moment il I fix that u are mine forever🫂....
+Maryadhakk enne ponn pole nokikkonm😏....kettooooooo.......
+You are like my mother, my best friend,a good partner,my ellam ellam.............🫂🫂🫂🫂🫂🫂🫂💖💖💖💖💖💖💖
+</p>
+
+<div class="gallery">
+<img src="https://i.postimg.cc/KvDp8L6P/Whats-App-Image-2026-02-08-at-4-06-24-PM.jpg">
+<img src="https://i.postimg.cc/0jrFwN7p/IMG-0002.jpg">
+<img src="https://i.postimg.cc/4N6qHj9V/IMG-0014.jpg">
+<img src="https://i.postimg.cc/zBv0dc3m/IMG-0018.jpg">
+</div>
+
+<p style="margin-top:15px;">
+I love you more with every passing day, Shuttu.  
+Forever yours,  
+<br><b>LOVE 💕</b>
+</p>
+</div>
+`;
+}
+
+/* Floating hearts */
+function createHearts() {
+for (let i = 0; i < 20; i++) {
+let heart = document.createElement("div");
+heart.classList.add("heart");
+heart.innerHTML = "💖";
+heart.style.left = Math.random() * 100 + "vw";
+heart.style.animationDuration = (3 + Math.random() * 3) + "s";
+document.body.appendChild(heart);
+}
+}
+createHearts();
+</script>
+
+</body>
+</html>
